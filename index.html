@@ -1,55 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha Pessoal</title>
+    <title>Locação de Filmes</title>
     <style>
-        table {
-            width: 200%;
-            border-collapse: collapse;
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
         }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #333;
+            border-radius: 8px;
         }
-        th {
-            background-color: #a9a9a9;
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .details {
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button.rent {
+            background-color: #007bff;
+            color: white;
+        }
+        button.favorite {
+            background-color: #28a745;
+            color: white;
+        }
+        button.stream {
+            background-color: #17a2b8;
+            color: white;
+        }
+        button.report {
+            background-color: #dc3545;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <h2>Ficha Pessoal</h2>
-    <table>
-        <tr>
-            <th>Nome:</th>
-            <td>Guilherme Buaszquevicz</td>
-        </tr>
-        <tr>
-            <th>Idade:</th>
-            <td>16 anos</td>
-        </tr>
-        <tr>
-            <th>Passatempos:</th>
-            <td>Ouvir Música(PHONK) Faxina </td>
-        </tr>
-        <tr>
-            <th>Gostos:</th>
-            <td>Literário (psicologia,desenvolvimento pessoal) Phonk</td>
-        </tr>
-        <tr>
-            <th>Personalidade:</th>
-            <td>Controlado e Sociável</td>
-        </tr>
-        <tr>
-            <th>Email:</th>
-            <td>gbuaszquevicz@gmail.com</td>
-        </tr>
-        <tr>
-            <th>Telefone:</th>
-            <td>(41) 99687-1572</td>
-        </tr>
-    </table>
+    <div class="container">
+        <div class="title">Título do Filme</div>
+        <div class="details">
+            <p><strong>Diretor:</strong> Nome do Diretor</p>
+            <p><strong>Ano:</strong> 2024</p>
+            <p><strong>Gênero:</strong> Ação, Aventura</p>
+            <p><strong>Sinopse:</strong> Este é um resumo breve do enredo do filme, destacando os principais acontecimentos e personagens.</p>
+        </div>
+        <div class="buttons">
+            <button class="rent" onclick="rentMovie()">Alugar Filme</button>
+            <button class="favorite" onclick="markFavorite()">Marcar como Favorito</button>
+            <button class="stream" onclick="streamMovie()">Transmitir</button>
+            <button class="report" onclick="reportMovie()">Denunciar</button>
+        </div>
+    </div>
+
+    <script>
+        function rentMovie() {
+            alert("Filme alugado com sucesso!");
+            // Aqui você pode adicionar a lógica para alugar o filme.
+        }
+
+        function markFavorite() {
+            alert("Filme marcado como favorito!");
+            // Aqui você pode adicionar a lógica para marcar o filme como favorito.
+        }
+
+        function streamMovie() {
+            alert("Iniciando transmissão do filme!");
+            // Aqui você pode adicionar a lógica para transmitir o filme.
+        }
+
+        function reportMovie() {
+            alert("Filme denunciado!");
+            // Aqui você pode adicionar a lógica para denunciar o filme.
+        }
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site with Vertical Menu</title>
+    <title>Site with Hamburger Menu</title>
     <style>
         body, html {
             margin: 0;
@@ -40,14 +40,33 @@
             font-size: 14px;
         }
 
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: white;
+        }
+
         .vertical-menu {
-            width: 200px;
+            display: none;
             position: fixed;
-            top: 100px; /* Adjust according to the height of the header */
+            top: 70px; /* Adjust according to the height of the header */
             left: 0;
+            width: 100%;
             background-color: #333;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .vertical-menu ul {
@@ -62,7 +81,7 @@
 
         .vertical-menu ul li a {
             display: block;
-            padding: 10px 15px;
+            padding: 10px 20px;
             background: #444;
             color: #fff;
             text-decoration: none;
@@ -75,26 +94,33 @@
         }
 
         .content {
-            margin-left: 220px; /* Width of the vertical menu + padding */
-            padding: 20px;
+            padding: 90px 20px 20px 20px; /* Adjust padding to account for the header */
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
             .vertical-menu {
-                width: 100%;
-                position: relative;
-                top: 0;
-                left: 0;
-                box-shadow: none;
+                display: block;
+            }
+
+            .vertical-menu ul {
+                display: none;
+                text-align: center;
+            }
+
+            .vertical-menu ul.show {
+                display: block;
             }
 
             .vertical-menu ul li a {
                 padding: 15px;
-                text-align: center;
             }
 
             .content {
-                margin-left: 0;
+                padding: 120px 20px 20px 20px;
             }
         }
     </style>
@@ -104,9 +130,14 @@
         <img src="logo.png" alt="Site Logo" class="logo">
         <h1>My Website</h1>
         <p>Welcome to my website, where you can find various resources and information.</p>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
-    <nav class="vertical-menu">
+    <nav class="vertical-menu" id="vertical-menu">
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -119,5 +150,12 @@
         <h2>Content Area</h2>
         <p>This is where the main content of the page would go.</p>
     </div>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var menu = document.getElementById('vertical-menu').querySelector('ul');
+            menu.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>

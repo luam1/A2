@@ -27,16 +27,11 @@
             align-items: center;
         }
 
-        .logo {
-            max-width: 100px;
-            display: inline-block;
-        }
-
         .menu-toggle {
             font-size: 30px;
             cursor: pointer;
             color: white;
-            display: none; /* Hidden by default */
+            display: none;
         }
 
         .menu-toggle span {
@@ -55,12 +50,12 @@
             padding: 0;
             margin: 0;
             transition: max-height 0.3s ease-in-out;
-            max-height: 0; /* Initially hidden */
+            max-height: 0;
             overflow: hidden;
             width: 100%;
             background-color: #333;
             position: absolute;
-            top: 70px; /* Below header */
+            top: 70px;
             left: 0;
             z-index: 999;
         }
@@ -89,7 +84,7 @@
 
         @media (max-width: 768px) {
             .menu-toggle {
-                display: block; /* Show toggle button on small screens */
+                display: block; 
             }
 
             .horizontal-menu {
@@ -102,7 +97,8 @@
             }
 
             .horizontal-menu.show {
-                max-height: 300px; /* Adjustable depending on the number of items */
+                max-height: 300px; 
+
             }
 
             .horizontal-menu li {
@@ -142,9 +138,6 @@
 </head>
 <body>
     <header class="header">
-        <div class="logo">
-            <img src="logo.png" alt="Site Logo">
-        </div>
         <div class="menu-toggle" id="menu-toggle">
             <span></span>
             <span></span>

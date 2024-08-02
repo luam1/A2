@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
-        text-color: #7d84ab;
+        $text-color: #7d84ab;
  secondary-text-color: #dee2ec;
 
-$bg-color: #0c1e35;
-$secondary-bg-color: #0b1a2c;
+bg-color: #0c1e35;
+secondary-bg-color: #0b1a2c;
 
-$border-color: rgba(#535d7d, 0.3);
+border-color: rgba(#535d7d, 0.3);
 
-$sidebar-header-height: 100px;
+sidebar-header-height: 100px;
 $sidebar-footer-height: 230px;
 
 
@@ -40,7 +40,7 @@ $sidebar-footer-height: 230px;
 
 
 .sidebar {
-  color: text-color;
+  color: $text-color;
   overflow-x: hidden !important;
   position: relative;
 
@@ -54,7 +54,7 @@ $sidebar-footer-height: 230px;
   }
   &::-webkit-scrollbar {
     width: 6px;
-    background-color: $bg-color;
+    background-color: bg-color;
   }
 
   .image-wrapper {
@@ -92,7 +92,7 @@ $sidebar-footer-height: 230px;
       display: flex;
       align-items: center;
       padding: 0 20px;
-      > span {
+      span {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

@@ -1,41 +1,994 @@
 <!DOCTYPE html>
- <html>
- <head>
-     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- </head>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gartem of Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C2C2C2;
+        }
+
+        header {
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            background-color: #00308a;
+            padding: 6px 40px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #FFFFFF;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .hero {
+            background-color: #FFFFFF;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            margin: 0;
+        }
+
+        .products-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 20px;
+        }
+
+        .product {
+            display: inline-block;
+            width: 200px;
+            margin: 0 10px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product button {
+            background-color: #00308a;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .product button:hover {
+            background-color: #575757;
+        }
+
+        @media screen and (max-widht: 768px) {
+            .container {
+                display: block;
+                background-image: none;
+            }
+
+            .container_image {
+                width: 50vw;
+            }
+
+                .container_caixa {
+                    margin: 2em 2em;
+                }
+       .responsive-image {
+            max-width: 100%;
+            height: auto; 
+            display: block;
+            margin: 0 auto;
+        }
+
+                .secundario {
+                    margin: 0;
+                    text-align: center;
+                }
+
+                .secundario_image {
+                    width: 50vw;
+                }
+
+                .dispositivos_lista {
+                    display: block;
+                }
+
+                .rodape_lista {
+                    display: block;
+                }
+
+        }   
+
+        footer {
+            background-color: #00308a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .wrapper .nav {
+    
+    display: flex;
+    background-color: #fff;
+    height: 60px;
+    max-height: 60px;
+    color: #4c4c4c;
+    transition: all 0.35s ease;
+    border-top: 1px #dedede solid;
+
+}
+
+.wrapper .nav .logo-menu {
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 60px;
+
+}
+
+.wrapper .nav .logo-menu .mob-menu {
+  display: none;
+}
+
+.wrapper .nav .logo-menu .mob-menu .menu {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30px;
+  width: 36px;
+  position: relative;
+  cursor: pointer;
+  transition: width 0.3s ease;
+}
+
+.wrapper .nav .logo-menu .mob-menu .menu span {
+
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transition: transform 0.4s ease, opacity 0.3s ease, transform-origin 0.3s ease;
+  transform-origin: left;
+}
+
+.wrapper .nav .logo-menu .mob-menu .hamburger1.active {
+  width: 40px;
+}
+
+.wrapper .nav .logo-menu .mob-menu .hamburger1.active span:nth-of-type(1) {
+  transform: rotate(-45deg);
+  transform-origin: right;
+}
+.wrapper .nav .logo-menu .mob-menu .hamburger1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+.wrapper .nav .logo-menu .mob-menu .hamburger1.active span:nth-of-type(3) {
+  transform: rotate(45deg);
+  transform-origin: right;
+}
+
+
+.wrapper .nav .nav-list-container {
+
+  width: 100%;
+}
+
+.wrapper .nav .navbar {
+  
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 auto;
+
+}
+
+.wrapper .nav .navbar .nav-list, .wrapper .nav .navbar .nav-actions {
+
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  gap: 0.25rem;
+
+}
+
+.wrapper .nav .navbar .nav-list li a, .wrapper .nav .navbar .nav-actions li a {
+
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 0.25rem;
+
+}
+
+.wrapper .nav .navbar .nav-list li a:hover, .wrapper .nav .navbar .nav-actions li a:hover {
+
+  background-color: #007cff;
+  color: #fff;
+
+}
+
+.wrapper .nav .navbar .nav-actions {
  
-   <nav>
-       <div class="nav-wrapper">
-           <a href="#" class="brand-logo">Logo</a>
-           <a href="#" data-activates="menu-mobile" class="button-collapse">
-               <i class="material-icons">menu</i>
-           </a>
-           <ul class="right hide-on-med-and-down">
-               <li><a href="#">Angular</a></li>
-               <li><a href="#">Ionic</a></li>
-               <li><a href="#">TypeScript</a></li>
-               <li><a href="#">Cordova</a></li>
-           </ul>
-           <ul class="side-nav" id="menu-mobile">
-               <li><a href="#">Angular</a></li>
-               <li><a href="#">Ionic</a></li>
-               <li><a href="#">TypeScript</a></li>
-               <li><a href="#">Cordova</a></li>
-           </ul>
-       </div>
-   </nav>
+  background: transparent;
 
- <body>
-     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-     <script>
+}
 
-       $(function(){
-           $(".button-collapse").sideNav();
-       });
-       
-     </script>
- </body>
- </html>
+.wrapper .nav .navbar .nav-actions li a {
+
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6;
+    font-size: 1.1em;
+
+}
+
+@media (max-width: 768px) {
+  
+  .wrapper .nav {
+    display: block;
+    height: auto;
+    max-height: unset;
+  }
+
+  .wrapper .nav .logo-menu {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .wrapper .nav .logo-menu .mob-menu {
+    display: block;
+  }
+
+  .wrapper .nav .navbar {
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
+  }
+
+  .wrapper .nav .navbar .nav-list, .wrapper .nav .navbar .nav-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .wrapper .nav .navbar .nav-list li, .wrapper .nav .navbar .nav-actions li {
+    margin: 0.25rem 0;
+    flex: 1 1 auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .wrapper .nav .navbar .nav-list li a, .wrapper .custom-nav .navbar .nav-actions li a {
+    display: block;
+  }
+
+  .wrapper .nav .navbar .nav-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    border: unset;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0.25rem 0;
+  }
+
+  .wrapper .nav .navbar .nav-actions li a {
+    display: flex;
+    border-radius: 0.25rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+}
+
+.wrapper .container {
+
+  height: calc(100vh-60px);
+  padding: 50px;
+  text-align: center;
+
+}
+    </style>
+</head>
+<body>
+    <header>
+                <!--Abre Nav-->
+                <div class="wrapper">
+                  <nav class="nav">
+              
+                      <div class="logo-menu">
+                        
+                        <div class="mob-menu">
+                          
+                          <div class="menu hamburger1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                          </div>
+                        </div>
+                      </div><!--Logo Menu-->
+                      <div class="nav-list-container">
+                        <div class="navbar">
+                          
+                          <ul class="nav-list">
+                              
+                              <li><a href="#" title="Home">Home</a></li>
+                              <li><a href="#" title="Html">Html</a></li>
+                              <li><a href="#" title="Css">Css</a></li>
+                              <li><a href="#" title="Jquery">Jquery</a></li>
+                              <li><a href="#" title="Wordpress">WordPress</a></li>
+                              <li><a href="#" title="Contato">Contato</a></li>
+                          
+                          </ul>
+                          
+                          <ul class="nav-actions">
+                            
+                              <li>
+                                  <a href="#"> <i class="icon icon-facebook"></i> </a>
+                              </li>
+                            
+                              <li>
+                                  <a href="#"> <i class="icon icon-instagram"></i> </a>
+                              </li>
+                              <li>
+                                  <a href="#"> <i class="icon icon-youtube"></i> </a>
+                              </li>
+                          </ul>
+                        </div>
+                      </div>
+                  </nav>
+                  </div>
+                  <!--Fecha Nav-->
+    </header>
+
+
+    <header>
+            <a class="nav-link" href="index3.html">⚙</a>
+            <a class="nav-link" href="index4.html">🔎</a>
+            <a class="nav-link" href="index5.html">💬</a>
+            <a class="nav-link" href="index6.html">❕</a>
+        </nav>
+    </header>
+
+    <div class="hero" id="home">
+        <div class="container">
+            <h1>Bem-vindo à Livraria Online</h1>
+            <p>Descubra uma vasta coleção de livros ao seu alcance de forma acessível e grátis.</p>
+            <p>OBS: Esse e um site mobile pode ser que ele tenha muitos bugs no computador.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 id="books">Livros em Destaque</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81TmHlRleJL._AC_UF1000.jpg" alt="Livro 1" width="192">
+                <h3>Jujutsu no Kaisen</h3>
+                <p>Autor: Gege Akutami</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/61YQD6u5liL._AC_UF1000.jpg" alt="Livro 2" width="183">
+                <h3>Kaiju nº 8</h3>
+                <p>Autor: Naoya Matsumoto</p>
+                <button onclick="alert('Livro 2 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/91zj0WZtIYL._AC_UF1000.jpg" alt="Livro 3" width="198">
+                <h3>Divina Comédia</h3>
+                <p>Autor: Dante Alighieri</p>
+                <button onclick="alert('Livro 3 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81OYRZEQG7L._AC_UF1000,1000_QL80_FMwebp_.jpg" alt="Livro 3" height="" width="204">
+                <h3>Solo leving</h3>
+                <p>Autor: Chu-Gong</p>
+                <button onclick="alert('Livro 4 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/51Fe45NGwkL._SY466_.jpg" alt="Livro 3" height="" width="181">
+                <h3>A Arte da Guerra</h3>
+                <p>Autor: Sun Tzu</p>
+                <button onclick="alert('Livro 5 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/518mqZ7A31L._SY445_SX342_.jpg" alt="Livro 3" height="" width="171">
+                <h3>Harry Potter e a</h3>
+                <h3>Pedra Filosofal</h3>
+                <p>Autor: J.K Rowling</p>
+                <button onclick="alert('Livro 6 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/41kT95iZ81L._SY445_SX342_.jpg" alt="Livro 3" height="20" width="178">
+                <h3>Harry Potter e o</h3>
+                <h3>Prisioneiro de Azkaban</h3>
+                <p>Autor: J.K Rowling</p>
+                <button onclick="alert('Livro 7 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/41RBd2DvmgL._SY445_SX342_.jpg" alt="Livro 3" height="" width="167">
+                <h3>O Senhor dos Aneis a</h3>
+                <h3>Sociedade dos Aneis</h3>
+                <p>Autor: Tolkien</p>
+                <button onclick="alert('Livro 8 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81slUinjTlS._AC_UF1000,1000_QL80_FMwebp_.jpg" alt="Livro 3" height="" width="190">
+                <h3>O Alquimista</h3>
+                <p>Autor: Paulo Coelho</p>
+                <button onclick="alert('Livro 9 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">  
+                <img src="https://m.media-amazon.com/images/I/815Bx8hFodL._AC_UF1000,1000_QL80_FMwebp_.jpg" alt="Livro 3" height="" width="193">
+                <h3>O Vento Levou</h3>
+                <p>Autor: Margaret Mitchell</p>
+                <button onclick="alert('Livro 10 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81diwihAz6L._AC_UF1000,1000_QL80_FMwebp_.jpg" alt="Livro 3" height="20" width="181">
+                <h3>O Livro Vermelho</h3>
+                <p>Autor: Carl Gustav Jung</p>
+                <button onclick="alert('Livro 11 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81022XMXiKL._SY466_.jpg" alt="Livro 3" height="" width="193">
+                <h3>A Menina do Outro Lado</h3>
+                <p>Autor: Nagabe</p>
+                <button onclick="alert('Livro 12 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://xfs-n11.xfsbb.com/thumb/W600/ampi/99b/99b2792b329e798776ae91e49c586b0eea44d99b_600_900_522160.jpeg" alt="Livro 3" height="" width="170">
+                <h3>The Greatest Estate</h3>
+                <h3>Developer</h3>
+                <p>Autor: Naty Silva</p>
+                <button onclick="alert('Livro 13 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThPHYHLodx69-90NPjqyU_n_DoOKcjblr8Qw&s" alt="Livro 3" height="" width="182">
+                <h3>Sense Life</h3>
+                <p>Autor: Caio Ulisses</p>
+                <button onclick="alert('Livro 14 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+     <div class="container">
+        <h2 id="books">Livros Economia</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+     <div class="container">
+        <h2 id="books">Revistas de Botanica</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+     <div class="container">
+        <h2 id="books">Pesquisas Científicas</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+     <div class="container">
+        <h2 id="books">Consientização</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+     <div class="container">
+        <h2 id="books">Revistas Científicas</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+            <div class="product">
+                <img src="https://img.elo7.com.br/product/zoom/3FE757D/lancamento-em-breve.jpg" alt="Livro 1" width="200">
+                <h3>??????</h3>
+                <p>Autor: ??????</p>
+                <button onclick="alert('Livro 1 adicionado ao carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>&copy; 2024 Gartem of Books</footer>
+..................................................................................
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+      toggleNavbar();
+      $(window).resize((event) => {
+        if ($(window).width() > 768) {
+          $(".nav-list-container").css("display", "flex");
+          if ($(".hamburger1").hasClass("active")) {
+            $(".hamburger1").removeClass("active");
+          }
+        }
+      });
+    });
+
+    function toggleNavbar() {
+      $(".mob-menu").on("click", (event) => {
+        $(".hamburger1").toggleClass("active");
+        $(".nav-list-container").animate(
+          {
+            height: "toggle"
+          },
+          500
+        );
+      });
+    }
+    document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+            
+        });
+      });
+    });
+</script>
+    <script>
+        
+    </script>
+</body>
+</html>
